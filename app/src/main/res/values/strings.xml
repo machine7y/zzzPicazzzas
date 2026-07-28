@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">zzzPicazzzas</string>
+
+    <string name="network_error">Network error</string>
+
+    <string name="splash_labelPizzaAnimation">Pizza animation</string>
+
+    <string name="detail_titleSmall">Pizzas</string>
+    <string name="detail_internalExceptionMessage">Internal error</string>
+    <string name="detail_messageBack">Back</string>
+    <string name="detail_messageFavorite">Favorite</string>
+    <string name="detail_Add">Add</string>
+    <string name="detail_priceFormat">$%1$.2f</string>
+    <string name="detail_messageAdded">Added</string>
+    <string name="detail_descriptionDecrease">decrease</string>
+    <string name="detail_descriptionBack">back</string>
+    <string name="detail_descriptionFavorite">add to favorite</string>
+    <string name="detail_descriptionPizza">pizza</string>
+    <string name="detail_descriptionBanana">banana</string>
+    <string name="detail_descriptionZoom">zoom</string>
+</resources>
