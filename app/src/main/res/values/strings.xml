@@ -18,4 +18,5 @@
     <string name="detail_descriptionPizza">pizza</string>
     <string name="detail_descriptionBanana">banana</string>
     <string name="detail_descriptionZoom">zoom</string>
+    <string name="detail_labelTitleAnimation">Title animation</string>
 </resources>

@@ -40,9 +40,11 @@ class DetailViewModel @Inject constructor(
                 ?.variants
                 ?.find { it.size == variant?.size }
                 ?.price
+            val title = internalState.pizzaList.pizzas.find { it.id == newSelectedPizzaId }?.name ?: ""
 
             updateState {
                 copy(
+                    title = title,
                     isZoomMode = if (getSelectedPizza().id == newSelectedPizzaId) !isZoomMode else false,
                     selectedPizzaId = newSelectedPizzaId,
                     fullPrice = price?.let { (it * pizzaCount).toFloat() } ?: 0f

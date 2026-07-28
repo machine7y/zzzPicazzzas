@@ -1,9 +1,14 @@
 package com.example.zzzpicazzzas.presentation.screen.detail
 
 import android.widget.Toast
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -77,6 +82,7 @@ private const val RADIUS_RATIO_TO_SCREEN_HEIGHT = 0.37f
 private const val CENTER_POINT_RATIO_TO_SCREEN_HEIGHT = 0.27f
 private const val ANIM_SCREEN_RADIUS_SPRING_DUMP_RATIO = 0.7f
 private const val ANIM_SIZE_SPRING_DUMP_RATIO = 0.7f
+private const val ANIM_TITLE_ANIMATION_DURATION_MILLIS = 300
 
 @Composable
 fun DetailScreen() {
@@ -427,17 +433,26 @@ fun Header(
                     fontSize = 10.sp,
                     color = TextAndIconColor,
                     modifier = Modifier
-                        .offset(y = - animSumOffsetXY),
+                        .offset(y = -animSumOffsetXY),
                 )
-                Text(
-                    text = title,
-                    fontSize = titleFontSize,
-                    lineHeight = titleFontSize,
-                    letterSpacing = letterSpacingPercentToSp(0.02f, titleFontSize),
-                    fontWeight = FontWeight.Bold,
+                AnimatedContent(
+                    targetState = title,
+                    transitionSpec = {
+                        fadeIn(animationSpec = tween(ANIM_TITLE_ANIMATION_DURATION_MILLIS)) togetherWith
+                            fadeOut(animationSpec = tween(ANIM_TITLE_ANIMATION_DURATION_MILLIS))
+                    },
+                    label = stringResource(R.string.detail_labelTitleAnimation),
                     modifier = Modifier
-                        .offset(y = - animSumOffsetXY),
-                )
+                        .offset(y = -animSumOffsetXY),
+                ) { targetText ->
+                    Text(
+                        text = targetText,
+                        fontSize = titleFontSize,
+                        lineHeight = titleFontSize,
+                        letterSpacing = letterSpacingPercentToSp(0.02f, titleFontSize),
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
             }
             Image(
                 imageVector = ImageVector.vectorResource(R.drawable.ic_favorite),
@@ -559,7 +574,7 @@ fun Preview() {
         ),
         onPlusClicked = { },
         onMinusClicked = { },
-        onSizeClicked =  { },
+        onSizeClicked = { },
         onPizzaSelected = { },
     )
 }
